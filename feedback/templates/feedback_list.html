@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+{%block title%}Add the Teacher{%endblock%}
+
+{%block addition%}
+<li class="nav-item">
+    <a class="nav-link" href="{%url 'feedback list'%}">All feedbacks</a>
+</li>
+{%endblock%}
+
+{%block content%}
+<h1 style="text-align: center;">Feedbacks list</h1>
+<div class="row">
+{%for feedback in feedbacks%}
+<div class="card m-5" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-text">{{feedback.student_name}}</h3>
+      <p class="card-text">{{feedback.message}}</p>
+      <p>Created at:{{feedback.created_at}}</p>
+    </div>
+</div>
+{%empty%}
+<h2>There aren't any feedbacks</h2>
+{%endfor%}
+</div>
+{%endblock%}

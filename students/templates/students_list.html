@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+{%block title%}Students list{%endblock%}
+
+{%block addition%}
+<li class="nav-item">
+    <a class="nav-link" href="{%url 'student add'%}">Add a student</a>
+</li>
+{%endblock%}
+
+{%block content%}
+<h1 style="text-align: center;">Students list</h1>
+<div class="row">
+{%for student in students%}
+<div class="card m-5" style="width: 18rem;">
+    <div class="card-body">
+      <p class="card-text">{{student.full_name}} studies in {{student.grade}}th grade</p>
+      <p class="card-text">Is active: {{student.is_active}}</p>
+    </div>
+</div>
+{%empty%}
+<h2>There aren't any students</h2>
+{%endfor%}
+</div>
+{%endblock%}

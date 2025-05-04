@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+{%block title%}Add the Teacher{%endblock%}
+
+{%block addition%}
+<li class="nav-item">
+    <a class="nav-link" href="{%url 'feedback list'%}">All feedbacks</a>
+</li>
+{%endblock%}
+
+{%block content%}
+<h1 style="text-align: center;">Feedback</h1>
+<form action="" method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">
+        Send feedback
+    </button>
+</form>
+
+{%endblock%}

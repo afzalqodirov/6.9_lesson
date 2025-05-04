@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+{%block title%}Students list{%endblock%}
+
+{%block addition%}
+<li class="nav-item">
+    <a class="nav-link" href="{%url 'teacher add'%}">Add a teacher</a>
+</li>
+{%endblock%}
+
+{%block content%}
+<h1 style="text-align: center;">Teachers list</h1>
+<div class="row">
+{%for teacher in teachers%}
+<div class="card m-5" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-text">{{teacher.name}}</h3>
+      <p class="card-text">Teacher from {{teacher.subject}} for over {{teacher.experience_years}}</p>
+      <a href="{{teacher.email}}" target="_blank">click to contact</a>
+    </div>
+</div>
+{%empty%}
+<h2>There aren't any teachers</h2>
+{%endfor%}
+</div>
+{%endblock%}
