@@ -3,13 +3,28 @@
 {%block title%}Students list{%endblock%}
 
 {%block addition%}
+{% if user.is_authenticated %}
 <li class="nav-item">
     <a class="nav-link" href="{%url 'student add'%}">Add a student</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="{%url 'Logout'%}">Logout</a>
+</li>
+{% else %}
+<li class="nav-item">
+    <a class="nav-link" href="{%url 'register'%}">Register to add</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{%url 'Login'%}">Login</a>
+</li>
+{% endif %}
 {%endblock%}
 
 {%block content%}
 <h1 style="text-align: center;">Students list</h1>
+{% if user.is_authenticated %}
+<h3>Heheeey hellouu {{user.first_name}} {{user.last_name}} </h3>
+{% endif %}
 <div class="row">
 {%for student in students%}
 <div class="card m-5" style="width: 18rem;">

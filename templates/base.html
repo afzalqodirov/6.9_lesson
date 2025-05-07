@@ -1,5 +1,10 @@
 <html lang="en">
 <head>
+  <style>
+    .aligning {
+      text-align:center;
+    }
+  </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%block title%}Home page{%endblock%}</title>
@@ -20,16 +25,32 @@
               <li class="nav-item">
                 <a class="nav-link" href="{%url 'teachers'%}">Teachers</a>
               </li>
+              {% if  user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="{%url 'feedback'%}">Send feedback</a>
               </li>
+              {% endif %}
               {%block addition%}{%endblock%}
             </ul>
           </div>
         </div>
       </nav>
 
-    {%block content%}{%endblock%}
+    {%block content%}
+    {% if  user.is_authenticated%}
+    <div class="aligning">
+    <h1>Hellou how's life? {{user}}</h1>
+    <h3><a href="{% url "Logout" %}">Logout</a></h3>
+    <h4>Change <a href="{% url "pass change" %}">password</a>?</h4>
+    </div>
+    {% else %}
+    <div class="aligning">
+    <h1>Hey pss, wanna hear something funny?</h1>
+    <h3>If so <a href="{% url "register" %}">Register</a></h3>
+    <h3>If you are not new <a href="{% url "Login" %}">Login</a></h3>
+    </div>
+    {% endif %}
+    {%endblock%}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 </html>

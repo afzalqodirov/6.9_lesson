@@ -10,5 +10,6 @@ urlpatterns = [
     path('students/', include('students.urls')),
     path('teachers/', include('teachers.urls')),
     path('feedback/', include('feedback.urls')),
-    path('', home_page, name='houme')
+    path('account/', include('manage_accounts.urls')),
+    path('', home_page, name='houme'),
 ]
